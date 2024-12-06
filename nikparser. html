@@ -1,0 +1,146 @@
+<!--
+--  Downloaded from : https://haxor.my.id/save/nik_parse.html
+--  Official Web : https://prinsh.com
+--  script-deface-generator.prinsh.com
+-->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIK - Parser</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h3 {
+            color: #333;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        p {
+            font-size: 1.1em;
+            color: #666;
+            margin: 10px 0;
+        }
+        p span {
+            color: #333;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        .footer span {
+            font-weight: bold;
+        }
+        p {
+        color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>NIK - Parser</h2>
+        <label for="nikInput">Entered NIK:</label>
+        <input type="text" id="nikInput" maxlength="16" placeholder="Masukkan 16 digit NIK">
+        <button onclick="uraikanNIK()">Parse</button>
+        <h3>Hasil:</h3>
+        <p><strong>Kode Wilayah:</strong> <span id="kodeWilayah"></span></p>
+        <p><strong>Tanggal Lahir:</strong> <span id="tanggalLahir"></span></p>
+        <p><strong>Jenis Kelamin:</strong> <span id="jenisKelamin"></span></p>
+        <p><strong>Nomor Urut Registrasi:</strong> <span id="nomorUrut"></span></p>
+    </div>
+     <center> 
+   <br> 
+   <div style="width:100%;height:100px;"> 
+    <div style="height:100px;padding:30px;" class="bg-dark bg-opacity-50"> 
+     <p style="text-align:left;" class="text-light fw-bolder"> <i class="fa fa-whatsapp"></i> Contact WhatsApp : 6283842671582 <br> </p> 
+    </div> 
+    <div class="bg-dark" style="padding-top:20px;"> 
+     <p class="text-light" style="font-size:15px;height:40px;font-weight:100;">© 2024-2030 DitzzXploit Copyright Reserved</p> 
+    </div> 
+   </div> 
+  </center> 
+    <script>
+        function uraikanNIK() {
+            let nik = document.getElementById("nikInput").value;
+            if (nik.length !== 16 || isNaN(nik)) {
+                alert("Masukkan NIK yang valid, harus terdiri dari 16 digit angka.");
+                return;
+            }
+            let kodeWilayah = nik.substring(0, 6);
+            let tanggalLahir = parseInt(nik.substring(6, 8));
+            let bulanLahir = nik.substring(8, 10);
+            let tahunLahir = nik.substring(10, 12);
+            let nomorUrut = nik.substring(12);
+
+                  let jenisKelamin;
+            // Jika tanggal lahir lebih dari 40, artinya perempuan
+            if (tanggalLahir > 40) {
+                tanggalLahir -= 40;
+                jenisKelamin = "Perempuan";
+            } else {
+                jenisKelamin = "Laki-laki";
+            }
+            // Menentukan abad lahir (asumsi jika tahun lahir > 20 maka 1900-an, jika <= 20 maka 2000-an)
+            tahunLahir = parseInt(tahunLahir) > 20 ? '19' + tahunLahir : '20' + tahunLahir;
+            // Menampilkan hasil
+            document.getElementById("kodeWilayah").textContent = kodeWilayah;
+            document.getElementById("tanggalLahir").textContent = `${tanggalLahir}-${bulanLahir}-${tahunLahir}`;
+            document.getElementById("jenisKelamin").textContent = jenisKelamin;
+            document.getElementById("nomorUrut").textContent = nomorUrut;
+        }
+    </script>
+</body>
+</html>
